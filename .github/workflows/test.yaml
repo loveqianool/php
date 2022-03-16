@@ -28,7 +28,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: /7
+          context: ./7
           platforms: linux/amd64
           push: true
           tags: loveqianool/php:7
