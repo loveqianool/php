@@ -4,7 +4,7 @@ ADD https://cdn.jsdelivr.net/gh/mlocati/docker-php-extension-installer/install-p
 RUN chmod uga+x /usr/local/bin/install-php-extensions && sync && \
  install-php-extensions gd zip pdo_mysql mysqli pcntl intl gettext bcmath shmop soap sysvsem xmlrpc memcached opcache imagick sockets redis
 
-pecl install --configureoptions 'enable-sockets="yes" enable-openssl="yes" enable-http2="yes" enable-mysqlnd="yes" enable-swoole-json="yes" enable-swoole-curl="yes" enable-cares="yes"' swoole
+RUN pecl install --configureoptions 'enable-sockets="yes" enable-openssl="yes" enable-http2="yes" enable-mysqlnd="yes" enable-swoole-json="yes" enable-swoole-curl="yes" enable-cares="yes"' swoole
 
 FROM php:7-fpm-alpine
 
