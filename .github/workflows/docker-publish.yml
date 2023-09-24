@@ -42,7 +42,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Build and push
+      - name: Build and push 7
         uses: docker/build-push-action@master
         with:
           context: .
