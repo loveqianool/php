@@ -13,7 +13,7 @@ RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS curl-dev openssl-dev p
     enable-swoole-json="yes" \
     enable-swoole-curl="yes" \
     enable-cares="yes"' \
-    https://pecl.php.net/get/swoole-4.8.12.tgz
+    https://pecl.php.net/get/swoole-4.8.13.tgz
 
 FROM php:7-fpm-alpine
 
