@@ -4,7 +4,7 @@ ADD https://cdn.jsdelivr.net/gh/mlocati/docker-php-extension-installer/install-p
 RUN chmod uga+x /usr/local/bin/install-php-extensions && sync \
   && install-php-extensions gd zip pdo_mysql mysqli pcntl intl gettext bcmath shmop soap sysvsem xmlrpc memcached opcache imagick sockets redis
 
-RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS curl-dev openssl-dev pcre-dev pcre2-dev zlib-dev \
+RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS curl-dev openssl-dev pcre-dev pcre2-dev zlib-dev c-ares-dev \
   && pecl install --configureoptions \
     'enable-sockets="yes" \
     enable-openssl="yes" \
