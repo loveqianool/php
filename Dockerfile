@@ -34,7 +34,8 @@ RUN mv /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN apk add gnu-libiconv tzdata libwebp libpng libjpeg libxpm freetype libintl imagemagick icu-libs libmemcached zstd-dev libzip libavif libgomp --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted --no-cache
+RUN apk add gnu-libiconv tzdata libwebp libpng libjpeg libxpm freetype libintl lz4-libs c-ares imagemagick icu-libs libmemcached zstd-dev libzip libavif libgomp \
+    --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted --no-cache
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
 RUN docker-php-ext-enable gd zip pdo_mysql mysqli pcntl intl gettext bcmath shmop soap sysvsem xmlrpc memcached opcache imagick sockets redis swoole
