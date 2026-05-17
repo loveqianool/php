@@ -19,14 +19,12 @@ FROM php:7-fpm-alpine
 
 COPY --from=builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
 
-RUN mv /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
-
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
+RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
+ && ln -sf /usr/local/bin/php /usr/bin/php \
+ && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+   
 RUN apk add libzip --update-cache --no-cache && \
     apk add tzdata libwebp libpng libjpeg libxpm freetype libintl imagemagick icu-libs libmemcached zstd-dev libavif libgomp lz4-libs c-ares \
     --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted --no-cache
 
 RUN docker-php-ext-enable gd zip pdo_mysql mysqli pcntl intl gettext bcmath shmop soap sysvsem xmlrpc memcached opcache imagick sockets redis swoole
-
-RUN ln -sf /usr/local/bin/php /usr/bin/php
